@@ -22,7 +22,7 @@ Install from the Plover plugins manager.
 
 You can mix these metas into your text.
 
-```
+```json
 {
   "RO*L": "I roll a d20... the result is {:roll:d20}",
   "KO*EUPB": "Heads or tails? {:roll:coin}!",
