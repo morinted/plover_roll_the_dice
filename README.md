@@ -25,7 +25,7 @@ You can mix these metas into your text.
 ```json
 {
   "RO*L": "I roll a d20... the result is {:roll:d20}",
-  "KO*EUPB": "Heads or tails? {:roll:coin}!",
+  "KO*EUPB": "Heads or tails{?}{:roll:coin}{!}",
   "SAO*UR": "{:roll:choice:yep:sure:okay:fine by me}"
 }
 ```
