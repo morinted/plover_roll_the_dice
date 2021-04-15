@@ -31,7 +31,7 @@ def test_dice():
     assert results[-1] == '6'
 
     results = [_meta('d10') for x in range(0, 10)]
-    results.sort()
+    results.sort(key=int)
     assert results[0] == '0'
     assert results[-1] == '9'
 
