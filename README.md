@@ -10,8 +10,8 @@ Install from the Plover plugins manager.
 
 | Meta / Macro Name | Description |
 | ---- | ---- |
-| `{:roll:range:0:100}` | Get a random integer in the provided range. |
-| `{:roll:choice:option1:option2:etc}` | Randomly select a choice from the options provided. |
+| `{:roll:range:1:100}` | Get a random integer in the provided range (in this example, from 1 to 100, inclusive). |
+| `{:roll:choice:option1:option2:etc}` | Randomly write a choice from the options provided (in this example, `option1`, `option2`, and `etc`). Spaces are allowed and the word will respect the current capitalization state. |
 | `{:roll:d6}` | Roll a six-sided die. You can replace "6" with any positive whole number. Equivalent to `{:roll:range:1:6}`. |
 | `{:roll:d10}` | Roll a 10-sided die. Equivalent to `{:roll:range:0:9}`. |
 | `{:roll:d20}` | Roll a 20-sided die. Equivalent to `{:roll:range:1:20}`. |

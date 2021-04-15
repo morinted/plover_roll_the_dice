@@ -5,31 +5,33 @@ from roll_the_dice import dice
 
 def meta(ctx, cmdline):
     random.seed()
-    return _meta(ctx, cmdline)
-
-def _meta(ctx, cmdline):
-    args = cmdline.split(':')
-    command = args[0]
     action = ctx.new_action()
+    action.text = _meta(cmdline)
+    return action
 
+def _meta(cmdline):
+    command, *args = cmdline.split(':')
     if command == 'choice':
-        choices = args[1:]
+        # {:roll:choice:option 1:option 2:option n}
+        choices = args
         if len(choices) < 2:
             raise ValueError('you must provide at least 2 choices')
-        action.text = choice(choices)
-    elif command == 'coin':
-        action.text = choice(['heads', 'tails'])
-    elif command == '8ball':
-        action.text = eight_ball()
-    elif command == 'range':
-        low, high = args[1:]
+        return choice(choices)
+    if command == 'coin':
+        # {:roll:coin}
+        return choice(['heads', 'tails'])
+    if command == '8ball':
+        # {:roll:8ball}
+        return eight_ball()
+    if command == 'range':
+        # {:roll:range:1:10}
+        low, high = args
         low = int(low)
-        high = int(high)
-        action.text = str(random.randrange(low, high))
-    elif command.startswith('d'):
+        high = int(high) + 1 # Add 1 as randrange is [low, high)
+        return str(random.randrange(low, high))
+    if command.startswith('d'):
+        # {:roll:dN} where N is a positive integer.
         die_size = int(command[1:])
-        action.text = dice(die_size)
-    else:
-        raise ValueError('a valid roll option was not provided')
+        return dice(die_size)
 
-    return action
+    raise ValueError('a valid roll option was not provided')
